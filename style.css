@@ -865,14 +865,32 @@ textarea.big {
         gap: 20px;
     }
 
+    .imgbox {
+        min-height: 220px; /* Увеличиваем минимальную высоту */
+        height: auto;
+    }
+
+    .imgbox img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Важно: картинка заполняет блок, не деформируясь */
+        object-position: center;
+    }
+
+    /* Блок 1: картинка круга Иттена */
     .imgbox.tall {
-        min-height: 200px;
+        min-height: 280px; /* Делаем круг крупнее */
+        background: transparent;
+    }
+
+    .imgbox.tall img {
+        object-fit: contain; /* Круг не должен обрезаться */
     }
 
     /* Примеры картинок: 2 в ряд вместо 3 */
     .examples {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+        grid-template-columns: 1fr; /* На очень узких экранах лучше 1 в ряд */
+        gap: 20px;
     }
 
     /* Плашки заданий */
@@ -944,6 +962,79 @@ textarea.big {
     }
 }
 
+@media (max-width: 768px) {
+    /* 1. Сбрасываем сетки в одну колонку везде */
+    .card-grid,
+    .examples,
+    .pairs,
+    .question-pics {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    /* 2. Исправляем контейнеры картинок */
+    .imgbox {
+        width: 100% !important;
+        min-height: 280px !important; /* Увеличиваем высоту, чтобы картинка была видна */
+        height: auto !important;
+        padding: 0 !important; /* Убираем лишние отступы внутри */
+    }
+
+    .imgbox img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important; /* Заполняет блок без сжатия */
+        display: block !important;
+    }
+
+    /* 3. Оставляем круг Иттена целым */
+    .imgbox.tall img {
+        object-fit: contain !important; /* Чтобы круг не обрезался по краям */
+    }
+
+    /* 4. Кнопки выбора (пары) */
+    .pair-btn {
+        width: 100% !important;
+        padding: 15px !important;
+    }
+
+    .pair-card {
+        width: 100% !important;
+        height: 120px !important; /* Фиксируем высоту для мобилок */
+    }
+
+    .dot {
+        width: 80px !important;
+        height: 80px !important;
+    }
+
+    /* 5. Кнопки с фото (Блок 3) */
+    .pic-btn {
+        width: 100% !important;
+        margin-bottom: 10px;
+    }
+
+    .question-pics .center .pic-btn {
+        width: 100% !important;
+    }
+
+    /* 6. Тексты */
+    .title {
+        font-size: 26px !important;
+    }
+
+    .intro-text {
+        font-size: 18px !important;
+        margin-top: 25px !important;
+    }
+
+    .card {
+        padding: 20px 15px !important;
+    }
+}
+
 /* Совсем маленькие экраны (iPhone SE и подобные) */
 @media (max-width: 380px) {
     .pairs {
@@ -956,5 +1047,16 @@ textarea.big {
 
     .logo-pill img {
         height: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .imgbox {
+        min-height: 220px !important;
+    }
+
+    .dot {
+        width: 65px !important;
+        height: 65px !important;
     }
 }
