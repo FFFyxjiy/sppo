@@ -1,0 +1,960 @@
+:root {
+    --bg: #b62422;
+    --white: #ffffff;
+    --text: #5a2a2a;
+    --pill: #ffffff;
+    --radius-xl: 56px;
+    --shadow: 0 16px 36px rgba(0, 0, 0, .18);
+    --max: 1100px;
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--white);
+}
+
+.bg {
+    position: relative;
+    overflow: hidden;
+}
+
+.bg::before {
+    content: "";
+    position: absolute;
+    inset: -220px -240px -220px -240px;
+    background:
+            radial-gradient(circle at 18% 22%, rgba(255, 255, 255, .16) 0 46%, transparent 46% 100%),
+            radial-gradient(circle at 18% 22%, transparent 0 54%, rgba(255, 255, 255, .10) 54% 62%, transparent 62% 100%),
+            radial-gradient(circle at 72% 55%, transparent 0 52%, rgba(255, 255, 255, .10) 52% 60%, transparent 60% 100%);
+    pointer-events: none;
+}
+
+.bg::after {
+    content: "СППО";
+    position: absolute;
+    left: 50%;
+    top: 46%;
+    transform: translate(-50%, -50%);
+    font-weight: 900;
+    letter-spacing: .06em;
+    font-size: min(46vw, 520px);
+    color: rgba(255, 255, 255, .09);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 18px;
+    position: relative;
+    z-index: 1;
+}
+
+.section {
+    padding: 64px 0;
+}
+
+@media (max-width: 720px) {
+    .section {
+        padding: 42px 0;
+    }
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.logo-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--white);
+    color: #b1191b;
+    border-radius: 999px;
+    padding: 16px 28px;
+    box-shadow: var(--shadow);
+    margin: 22px 0 10px;
+    font-weight: 900;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+}
+
+.logo-pill img {
+    height: 44px;
+    width: auto;
+    display: block
+}
+
+.title {
+    font-size: clamp(34px, 4.6vw, 66px);
+    font-weight: 500;
+    letter-spacing: .02em;
+    text-align: center;
+    margin: 34px 0 0;
+}
+
+.intro-text {
+    margin: 70px auto 0;
+    max-width: 980px;
+    font-size: clamp(18px, 2.2vw, 34px);
+    font-style: italic;
+    text-align: center;
+    line-height: 1.25;
+    opacity: .95;
+}
+
+.block-title {
+    font-size: clamp(34px, 4.4vw, 64px);
+    font-weight: 900;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0 0 26px;
+}
+
+.card {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    padding: 34px 36px;
+    box-shadow: var(--shadow);
+    color: var(--text);
+}
+
+@media (max-width: 720px) {
+    .card {
+        padding: 22px 18px;
+        border-radius: 36px;
+    }
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: 1.25fr .9fr;
+    gap: 28px;
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card p {
+    margin: 0 0 12px;
+    font-size: 18px;
+    line-height: 1.55;
+}
+
+.divider.lines {
+    height: 0;
+    position: relative;
+    margin: 20px 0 60px;
+    z-index: 1;
+}
+
+.divider.lines::before,
+.divider.lines::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    background: #1f1f1f;
+    opacity: .85;
+    border-radius: 999px;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.divider.lines::after {
+    top: 12px;
+    left: 16%;
+    right: 12%;
+    opacity: .75;
+}
+
+.divider.lines span {
+    position: absolute;
+    height: 2px;
+    background: #1f1f1f;
+    opacity: .75;
+    border-radius: 999px;
+    top: 24px;
+    left: 28%;
+    right: 26%;
+    display: block;
+}
+
+.examples {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    align-items: start;
+    margin-top: 14px;
+}
+
+@media (max-width: 900px) {
+    .examples {
+        grid-template-columns: 1fr;
+    }
+}
+
+.imgbox {
+    border-radius: 28px;
+    background: rgba(0, 0, 0, .05);
+    min-height: 250px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(0, 0, 0, .45);
+    text-align: center;
+    padding: 12px;
+}
+
+.imgbox img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block
+}
+
+.imgbox.tall {
+    min-height: 320px
+}
+
+.hint {
+    font-size: 22px;
+    text-align: center;
+    margin: 12px 0 0;
+}
+
+.pill {
+    margin: 26px auto 0;
+    background: var(--pill);
+    color: var(--text);
+    border-radius: 999px;
+    padding: 16px 22px;
+    font-style: italic;
+    font-weight: 700;
+    box-shadow: var(--shadow);
+    max-width: var(--max);
+    text-align: left;
+}
+
+.pill.small {
+    margin-top: 18px;
+}
+
+.task-label {
+    margin-top: 34px;
+    font-weight: 800;
+    font-style: italic;
+}
+
+.pairs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 34px;
+    margin-top: 18px;
+    align-items: center;
+}
+
+@media (max-width: 980px) {
+    .pairs {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
+}
+
+.pair-btn {
+    width: 100%;
+    border: 0;
+    cursor: pointer;
+    border-radius: 20px;
+    padding: 18px 16px;
+    background: rgba(255, 255, 255, .12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
+    border: 2px solid transparent !important;
+}
+
+.pair-card {
+    background: #fff;
+    width: min(250px, 100%);
+    border-radius: 22px;
+    padding: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--shadow);
+}
+
+.dot {
+    width: 86px;
+    height: 86px;
+    border-radius: 50%;
+    margin-left: -18px;
+}
+
+.dot:first-child {
+    margin-left: 0
+}
+
+.answer-note {
+    margin: 18px 0 0;
+    font-weight: 800;
+    font-style: italic;
+    opacity: .95;
+}
+
+.font-pair {
+    background: #fff;
+    width: min(240px, 100%);
+    border-radius: 22px;
+    padding: 18px 16px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    color: var(--text);
+}
+
+.font-pair .top {
+    font-size: 22px;
+    letter-spacing: .04em;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.font-pair .bot {
+    margin-top: 8px;
+    font-size: 18px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    opacity: .9;
+}
+
+.question-pics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 26px;
+    margin-top: 26px;
+    align-items: start;
+}
+
+.question-pics .imgbox {
+    min-height: 260px;
+    background: rgba(255, 255, 255, .12)
+}
+
+.question-pics .center {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    margin-top: -6px;
+}
+
+.question-pics .center .imgbox {
+    width: min(560px, 100%);
+    min-height: 300px
+}
+
+.section-bar {
+    margin-top: 24px;
+    background: var(--pill);
+    color: var(--text);
+    border-radius: 999px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: var(--shadow);
+    font-weight: 900;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+.section-bar .line {
+    flex: 1;
+    height: 2px;
+    background: rgba(0, 0, 0, .35);
+    border-radius: 999px;
+}
+
+.instruction {
+    margin-top: 18px;
+    background: var(--pill);
+    color: var(--text);
+    border-radius: 999px;
+    padding: 16px 20px;
+    font-style: italic;
+    font-weight: 800;
+    box-shadow: var(--shadow);
+}
+
+.big-text {
+    margin-top: 22px;
+    font-size: clamp(18px, 2.2vw, 34px);
+    line-height: 1.18;
+    max-width: 980px;
+}
+
+.list {
+    margin-top: 20px;
+    font-size: clamp(18px, 2.2vw, 34px);
+    line-height: 1.18;
+    max-width: 980px;
+    padding-left: 0;
+    list-style: none;
+}
+
+.list li {
+    margin: 22px 0
+}
+
+.answer-input {
+    width: 100%;
+    max-width: 420px;
+    border: 0;
+    border-radius: 18px;
+    padding: 14px 16px;
+    font-size: 16px;
+    box-shadow: var(--shadow);
+    margin-top: 16px;
+    outline: none;
+}
+
+.creative-card {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    padding: 30px 32px;
+    box-shadow: var(--shadow);
+    color: var(--text);
+}
+
+.creative-card h3 {
+    margin: 0 0 14px;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.creative-card ul {
+    margin: 0;
+    padding-left: 18px;
+    line-height: 1.6;
+    font-size: 18px;
+}
+
+.answer-box {
+    margin-top: 22px;
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    padding: 26px 28px;
+    box-shadow: var(--shadow);
+    color: var(--text);
+    min-height: 520px;
+}
+
+.answer-box label {
+    display: block;
+    font-size: 18px;
+    opacity: .8;
+    margin-bottom: 10px;
+}
+
+textarea.big {
+    width: 100%;
+    min-height: 440px;
+    resize: vertical;
+    border: 0;
+    outline: none;
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 14px 12px;
+    border-radius: 18px;
+    background: rgba(0, 0, 0, .03);
+}
+
+/* Ховер-эффект - легкое увеличение и тень */
+.pair-btn:hover:not(.clicked) {
+    transform: scale(1.03);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Анимация появления подсветки */
+.pair-btn.correct.clicked {
+    animation: pulse-green 0.5s ease-out;
+    background: rgba(76, 175, 80, 0.25) !important;
+    border: 3px solid #4CAF50 !important;
+    transform: scale(1.02);
+}
+
+.pair-btn.incorrect.clicked {
+    animation: pulse-red 0.5s ease-out;
+    background: rgba(244, 67, 54, 0.25) !important;
+    border: 3px solid #F44336 !important;
+    transform: scale(1.02);
+}
+
+/* Анимация исчезновения подсветки */
+.pair-btn.clicked.fade-out {
+    animation: fade-out-highlight 0.5s ease-out forwards;
+}
+
+/* Для шрифтовых пар */
+.pair-btn.correct.clicked .font-pair {
+    animation: pulse-green 0.5s ease-out;
+    border: 3px solid #4CAF50;
+    box-shadow: 0 10px 25px rgba(76, 175, 80, 0.3);
+}
+
+.pair-btn.incorrect.clicked .font-pair {
+    animation: pulse-red 0.5s ease-out;
+    border: 3px solid #F44336;
+    box-shadow: 0 10px 25px rgba(244, 67, 54, 0.3);
+}
+
+.pair-btn .font-pair.fade-out {
+    animation: fade-out-highlight 0.5s ease-out forwards;
+}
+
+/* Для цветовых карточек */
+.pair-btn.correct.clicked .pair-card {
+    animation: pulse-green 0.5s ease-out;
+    box-shadow: 0 10px 25px rgba(76, 175, 80, 0.3);
+}
+
+.pair-btn.incorrect.clicked .pair-card {
+    animation: pulse-red 0.5s ease-out;
+    box-shadow: 0 10px 25px rgba(244, 67, 54, 0.3);
+}
+
+.pair-btn .pair-card.fade-out {
+    animation: fade-out-highlight 0.5s ease-out forwards;
+}
+
+/* Ключевые кадры анимаций */
+@keyframes pulse-green {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4);
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+    }
+
+    100% {
+        transform: scale(1.02);
+        box-shadow: 0 10px 25px rgba(76, 175, 80, 0.3);
+    }
+}
+
+@keyframes pulse-red {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(244, 67, 54, 0.4);
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(244, 67, 54, 0);
+    }
+
+    100% {
+        transform: scale(1.02);
+        box-shadow: 0 10px 25px rgba(244, 67, 54, 0.3);
+    }
+}
+
+@keyframes fade-out-highlight {
+    0% {
+        opacity: 1;
+        transform: scale(1.02);
+    }
+
+    100% {
+        opacity: 0.7;
+        transform: scale(1);
+        border-color: rgba(255, 255, 255, 0.2) !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+    }
+}
+
+/* После исчезновения - возвращаем базовые стили */
+.pair-btn.clicked:not(.fade-out) {
+    pointer-events: none;
+    /* Блокируем клики пока подсвечено */
+}
+
+/* При наведении на уже подсвеченную кнопку */
+.pair-btn.clicked:hover {
+    transform: scale(1.02);
+    /* Фиксируем размер */
+    cursor: default;
+}
+
+.imgbox,
+.imgbox img {
+    position: relative;
+    z-index: 2;
+}
+
+/* Стили для кнопок с картинками в блоке 3 */
+.pic-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 28px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    width: 100%;
+}
+
+/* Ховер-эффект */
+.pic-btn:hover:not(.clicked) {
+    transform: scale(1.03);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Анимация для правильного ответа */
+.pic-btn.correct.clicked {
+    animation: pulse-green 0.5s ease-out;
+    border: 3px solid #4CAF50 !important;
+    transform: scale(1.02);
+}
+
+/* Анимация для неправильного ответа */
+.pic-btn.incorrect.clicked {
+    animation: pulse-red 0.5s ease-out;
+    border: 3px solid #F44336 !important;
+    transform: scale(1.02);
+}
+
+/* Анимация исчезновения */
+.pic-btn.clicked.fade-out {
+    animation: fade-out-highlight 0.5s ease-out forwards;
+}
+
+/* Для центрированного блока */
+.question-pics .center .pic-btn {
+    width: min(560px, 100%);
+}
+
+.list li {
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin: 10px 0;
+    transition: all 0.3s ease;
+}
+
+/* Подсветка правильных/неправильных вариантов */
+.list li.correct-answer {
+    background: rgba(76, 175, 80, 0.25) !important;
+    border-left: 4px solid #4CAF50;
+    animation: pulse-bg-green 0.5s ease-out;
+}
+
+.list li.incorrect-answer {
+    background: rgba(244, 67, 54, 0.25) !important;
+    border-left: 4px solid #F44336;
+    animation: pulse-bg-red 0.5s ease-out;
+}
+
+/* Стили для поля ввода с цветовой индикацией */
+.answer-input {
+    width: 100%;
+    max-width: 420px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 18px;
+    padding: 14px 16px;
+    font-size: 16px;
+    box-shadow: var(--shadow);
+    margin-top: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.answer-input:focus {
+    border-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+}
+
+/* Цвета подсветки поля ввода */
+.answer-input.green {
+    border-color: #4CAF50;
+    background: rgba(76, 175, 80, 0.15);
+    animation: pulse-green-border 0.5s ease-out;
+}
+
+.answer-input.yellow {
+    border-color: #FFC107;
+    background: rgba(255, 193, 7, 0.15);
+    animation: pulse-yellow-border 0.5s ease-out;
+}
+
+.answer-input.red {
+    border-color: #F44336;
+    background: rgba(244, 67, 54, 0.15);
+    animation: pulse-red-border 0.5s ease-out;
+}
+
+/* Анимации для поля ввода */
+@keyframes pulse-green-border {
+    0% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+    }
+}
+
+@keyframes pulse-yellow-border {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 193, 7, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
+    }
+}
+
+@keyframes pulse-red-border {
+    0% {
+        box-shadow: 0 0 0 0 rgba(244, 67, 54, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(244, 67, 54, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(244, 67, 54, 0);
+    }
+}
+
+@keyframes pulse-bg-green {
+    0% {
+        background-color: rgba(76, 175, 80, 0.1);
+    }
+
+    50% {
+        background-color: rgba(76, 175, 80, 0.3);
+    }
+
+    100% {
+        background-color: rgba(76, 175, 80, 0.25);
+    }
+}
+
+@keyframes pulse-bg-red {
+    0% {
+        background-color: rgba(244, 67, 54, 0.1);
+    }
+
+    50% {
+        background-color: rgba(244, 67, 54, 0.3);
+    }
+
+    100% {
+        background-color: rgba(244, 67, 54, 0.25);
+    }
+}
+
+/* Стиль для ответа в блоке 5 */
+.answer-box.sent {
+    border: 3px solid #4CAF50;
+}
+
+.answer-box.sent::after {
+    content: "✓ Ответ отправлен";
+    display: block;
+    color: #4CAF50;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.word {
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    padding: 0 1px;
+    margin: 0 1px;
+    border-radius: 2px;
+    transition: all 0.2s;
+    display: inline-block;
+    line-height: 1.4;
+}
+
+.word:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.word.correct {
+    background-color: #4CAF50;
+    color: white;
+    border-bottom-color: #4CAF50;
+}
+
+.word.incorrect {
+    background-color: #F44336;
+    color: white;
+    border-bottom-color: #F44336;
+}
+
+/* --- МОБИЛЬНАЯ ОПТИМИЗАЦИЯ --- */
+@media (max-width: 768px) {
+    :root {
+        --radius-xl: 32px; /* Уменьшаем радиус скругления для узких экранов */
+    }
+
+    .section {
+        padding: 32px 0;
+    }
+
+    .title {
+        font-size: 28px;
+        line-height: 1.2;
+        padding: 0 10px;
+    }
+
+    .intro-text {
+        margin-top: 30px;
+        font-size: 18px;
+    }
+
+    .block-title {
+        font-size: 26px;
+        margin-bottom: 20px;
+    }
+
+    .card {
+        padding: 20px 16px;
+    }
+
+    /* Сетки в карточках делаем в одну колонку */
+    .card-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .imgbox.tall {
+        min-height: 200px;
+    }
+
+    /* Примеры картинок: 2 в ряд вместо 3 */
+    .examples {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    /* Плашки заданий */
+    .pill {
+        padding: 14px 18px;
+        font-size: 16px;
+        border-radius: 24px;
+    }
+
+    /* Сетка пар (Задания 1 и 2) */
+    .pairs {
+        grid-template-columns: 1fr 1fr; /* По 2 элемента в ряд */
+        gap: 12px;
+    }
+
+    .pair-btn {
+        padding: 10px;
+    }
+
+    .pair-card {
+        padding: 10px;
+    }
+
+    .dot {
+        width: 50px;
+        height: 50px;
+        margin-left: -12px;
+    }
+
+    /* Шрифтовые пары */
+    .font-pair {
+        width: 100%;
+        padding: 12px 8px;
+    }
+
+    .font-pair .top { font-size: 16px; }
+    .font-pair .bot { font-size: 14px; }
+
+    /* Блок с картинками (Блок 3) */
+    .question-pics {
+        grid-template-columns: 1fr; /* Картинки друг под другом */
+        gap: 16px;
+    }
+
+    .question-pics .imgbox {
+        min-height: 200px;
+    }
+
+    /* Творческий блок */
+    .answer-box {
+        padding: 16px;
+        min-height: auto;
+    }
+
+    textarea.big {
+        min-height: 250px;
+        font-size: 14px;
+    }
+
+    .list li {
+        font-size: 18px;
+        margin: 12px 0;
+    }
+
+    /* Убираем огромный текст в СППО на фоне, чтобы не мешал */
+    .bg::after {
+        font-size: 120px;
+        opacity: 0.05;
+    }
+}
+
+/* Совсем маленькие экраны (iPhone SE и подобные) */
+@media (max-width: 380px) {
+    .pairs {
+        grid-template-columns: 1fr; /* Все кнопки в одну колонку */
+    }
+
+    .logo-pill {
+        padding: 10px 16px;
+    }
+
+    .logo-pill img {
+        height: 30px;
+    }
+}
